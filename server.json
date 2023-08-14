@@ -1,0 +1,8 @@
+{
+    "name":"crud",
+    "web":{
+        "rewrites":{
+            "enable":"true"
+        }
+    }
+}

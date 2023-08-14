@@ -1,0 +1,15 @@
+{
+    "dependencies":{
+        "cborm":"^4.4.0-snapshot",
+        "coldbox":"^7.1.0+10"
+    },
+    "installPaths":{
+        "cborm":"modules/cborm/",
+        "coldbox":"coldbox/"
+    },
+    "location":"",
+    "name":"crud",
+    "scripts":{},
+    "slug":"crud",
+    "version":"1.0.0"
+}
