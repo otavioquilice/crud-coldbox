@@ -36,6 +36,37 @@ component {
 
 		// Conventions-Based Routing
 		route( ":handler/:action?" ).end();
+
+
+		route( "/carro/create" ).as("carro_create").to('carro.create')
+			.withAction( {
+				POST : "cadastrarCarro",
+				OPTIONS: "preFlight"
+		});
+
+		route( "/carro/show" ).as("carro_show").to('carro.show')
+			.withAction( {
+				GET : "mostrarCarro",
+				OPTIONS: "preFlight"
+		});
+
+		route( "/carro/update" ).as("carro_update").to('carro.update')
+			.withAction( {
+				PUT : "atualizarCarro",
+				OPTIONS: "preFlight"
+		});
+
+		route( "/carro/delete" ).as("carro_deletar").to('carro.deletar')
+			.withAction( {
+				DELETE : "deletarCarro",
+				OPTIONS: "preFlight"
+		});
+
+		route( "/carro/listar" ).as("carro_listar").to('carro.listar')
+			.withAction( {
+				GET : "obterLista",
+				OPTIONS: "preFlight"
+		});
 	}
 
 }
