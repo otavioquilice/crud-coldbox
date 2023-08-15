@@ -1,8 +1,37 @@
 {
-    "name":"crud",
+    "dockEnable":false,
+    "trayEnable":false,
+    "openBrowser":false,
+    "name":"crud_carros",
     "web":{
+        "blockCFAdmin":false,
+        "blockSensitivePaths":true,
+        "host":"0.0.0.0",
+        "http":{
+            "enable":true,
+            "port":8500
+        },
         "rewrites":{
-            "enable":"true"
+            "enable":true
+        },
+        "rules":[
+            "regex('(.*).xml') -> set-error( 404 )",
+            "regex('(.*).XML') -> set-error( 404 )"
+        ]
+    },
+    "app":{
+        "cfengine":"adobe@2018.0.14.330003"
+    },
+    "datasources":{
+        "crud_carro":{
+            "driver":"com.mysql.jdbc.Driver",
+            "url":"jdbc:mysql://localhost:3306/crud_carro",
+            "username":"root",
+            "password":"Joaninha@123",
+            "validationQuery":"SELECT 1",
+            "validationQueryTimeout":5,
+            "maxActive":10,
+            "minIdle":2
         }
     }
 }
