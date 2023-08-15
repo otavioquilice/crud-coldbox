@@ -4,49 +4,63 @@ component extends="coldbox.system.EventHandler" {
 
 	
 	function index( event, rc, prc ){
+
 		event.setView( "formularioCarro" );
 	}
 
 	any function create( event, rc, prc ){
 
+		if (isNull(rc.modeloCarro) || isNull(rc.ano) || isNull(rc.quantidade)  ) {
+			return "Todos os campos são obrigatórios!";
+		};
+	
 		dados = carro.new();
 
-		dados.setModeloCarro(rc.form.modelo_carro);
-		dados.setAno(rc.form.ano);
-		dados.setQuantidade(rc.form.quantidade);
+		dados.setModeloCarro(rc.modeloCarro);
+		dados.setAno(rc.ano);
+		dados.setQuantidade(rc.quantidade);
 		dados.save(dados);
 
 		return "Carro cadastrado com sucesso!";
+
+		
 	}
 
 	any function show( event, rc, prc ){
 
-		dados 		= carro.get();
-		modelo 		= dados.getModeloCarro();
-		ano 		= dados.getAno();
-		quantidade 	= dados.getQuantidade();
+		var carroID = rc.id; 
+        var dados = carro.get(carroID);
 
-		writeDump(carro.getMemento());
-		abort;
+		if (dados.getIdCarro()) {
+
+			var dadoSimplificado = {
+				modelo: dados.getModeloCarro(),
+				ano: dados.getAno(),
+				quantidade: dados.getQuantidade()
+    		};
+    
+    		return dadoSimplificado;
+			
+		} else {
+
+			return "Carro não encontrado.";
+		}
+
 	}
 
 	any function update( event, rc, prc ){
 
-		// Obtenha o ID do carro
-        var idCarro = rc.routeVars.idCarro;
-		dados  = carro.get(id=idCarro);
+        var idCarro = rc.id;
+		dados  = carro.get(idCarro);
 
-		if (dados) {
+		if (dados.getIdCarro()) {
 
-			// Atualize os atributos do carro com os novos valores
-            dados.getModeloCarro(rc.form.nome);
-            dados.getAno(rc.form.idade);
-			dados.getQuantidade(rc.form.idade);
-            
-            // Salve as alterações no banco de dados
+            dados.setModeloCarro(rc.modeloCarro);
+            dados.setAno(rc.ano);
+			dados.setQuantidade(rc.quantidade);
             carro.save(dados);
-            
-            return "Carro atualizado com sucesso!";
+
+			return "Carro atualizado com sucesso!";
 
 		} else {
 
@@ -57,13 +71,13 @@ component extends="coldbox.system.EventHandler" {
 
 	any function delete( event, rc, prc ){
 
-		// Obtenha o ID do carro
-        var idCarro = rc.routeVars.idCarro;
-		dados  = carro.get(id=idCarro);
+        var idCarro = rc.id;
+		dados  = carro.get(idCarro);
 
-		if (dados) {
+		if (dados.getIdCarro()) {
 
-			carro.delete(dados);            
+			carro.delete(dados);  
+			   
             return "Carro Excluido com sucesso!";
 
 		} else {
@@ -77,8 +91,19 @@ component extends="coldbox.system.EventHandler" {
 
 		dados  = carro.list();
 
-		writeDump(arrayLen(carro));
-		abort;
+		var dadosSimplificados = [];
+
+		for( dado in dados ) {
+
+			dadosSimplificados.append({
+				modelo: dado.getModeloCarro(),
+				ano: dado.getAno(),
+				quantidade: dado.getQuantidade()
+			});
+		}
+    
+		return dadosSimplificados;
+
 	}
 
 }
