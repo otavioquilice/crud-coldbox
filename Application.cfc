@@ -61,6 +61,8 @@ component {
 	this.mappings[ "/cbapp" ]   = COLDBOX_APP_ROOT_PATH;
 	this.mappings[ "/coldbox" ] = COLDBOX_APP_ROOT_PATH & "coldbox";
 
+	// Locate the cborm module for events
+	this.mappings[ "/cborm" ] = COLDBOX_APP_ROOT_PATH & "modules/cborm";
 	/**
 	 * --------------------------------------------------------------------------
 	 * ORM + Datasource Settings
