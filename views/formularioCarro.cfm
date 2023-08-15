@@ -1,6 +1,6 @@
 <h1>Cadastrar Carro</h1>
 
-<form method="post" action="event.buildLink('carro.create')">
+<form method="post" action="/carro/create">
     <label for="modeloCarro">Nome Modelo:</label>
     <input type="text" id="modeloCarro" name="modeloCarro" value=""><br><br>
     
@@ -8,7 +8,7 @@
     <input type="text" id="ano" name="ano" value=""><br><br>
 
     <label for="quantidade">Quantidade:</label>
-    <input type="number" type="number" min="1940" max="2024" step="1" id="quantidade" name="quantidade" value="#carro.quantidade#"><br><br>
+    <input type="number" type="number" min="0" step="1" id="quantidade" name="quantidade" value="#carro.quantidade#"><br><br>
     
     <input type="submit" value="Cadastrar">
 </form>
