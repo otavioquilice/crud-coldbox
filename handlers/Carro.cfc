@@ -33,13 +33,12 @@ component extends="coldbox.system.EventHandler" {
 
 		if (dados.getIdCarro()) {
 
-			var dadoSimplificado = {
-				modelo: dados.getModeloCarro(),
-				ano: dados.getAno(),
-				quantidade: dados.getQuantidade()
-    		};
-    
-    		return dadoSimplificado;
+			prc.id = dados.getIdCarro();
+			prc.modelo = dados.getModeloCarro();
+			prc.ano = dados.getAno();
+			prc.quantidade = dados.getQuantidade();
+
+			event.setView( "formularioUpdate" );
 			
 		} else {
 
@@ -60,7 +59,7 @@ component extends="coldbox.system.EventHandler" {
 			dados.setQuantidade(rc.quantidade);
             carro.save(dados);
 
-			return "Carro atualizado com sucesso!";
+			return relocate(url='http://localhost:8500/carro/listar');
 
 		} else {
 
@@ -78,7 +77,7 @@ component extends="coldbox.system.EventHandler" {
 
 			carro.delete(dados);  
 			   
-            return "Carro Excluido com sucesso!";
+            event.setView( "formularioCarro" );
 
 		} else {
 
@@ -98,11 +97,15 @@ component extends="coldbox.system.EventHandler" {
 			dadosSimplificados.append({
 				modelo: dado.getModeloCarro(),
 				ano: dado.getAno(),
-				quantidade: dado.getQuantidade()
+				quantidade: dado.getQuantidade(),
+				editar: '<a href="/carro/show?id=#dado.getIdCarro()#">Editar</a>',
+				excluir: '<a href="/carro/delete?id=#dado.getIdCarro()#">Excluir</a>'
 			});
 		}
-    
-		return dadosSimplificados;
+
+		prc.carros = dadosSimplificados;
+
+		event.setView( "listaCarro" );
 
 	}
 
