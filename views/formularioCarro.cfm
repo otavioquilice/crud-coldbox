@@ -1,7 +1,7 @@
 <cfoutput>
     <h1>Cadastrar Carro</h1>
 
-    <form  method="post" (prc.id ?  action="/carro/update" :  action="/carro/create" )>
+    <form  method="post" action="/carro/create">
         <div class="form-group">
             <label for="exampleInputEmail1">Nome modelo</label>
             <input type="text" class="form-control" name="modeloCarro" value="" id="modelo" aria-describedby="modelo" placeholder="Nome Modelo">

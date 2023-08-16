@@ -21,7 +21,7 @@ component extends="coldbox.system.EventHandler" {
 		dados.setQuantidade(rc.quantidade);
 		dados.save(dados);
 
-		return "Carro cadastrado com sucesso!";
+		return relocate(url='http://localhost:8500/carro/listar');
 
 		
 	}
@@ -77,7 +77,7 @@ component extends="coldbox.system.EventHandler" {
 
 			carro.delete(dados);  
 			   
-            event.setView( "formularioCarro" );
+            return relocate(url='http://localhost:8500/carro/listar');
 
 		} else {
 

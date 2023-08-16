@@ -1,7 +1,7 @@
 <cfoutput>
     <h1>Atualizar Carro</h1>
 
-    <form  method="post" ( prc.id ?  action="/carro/update" :  action="/carro/create" )>
+    <form  method="post" action="/carro/update">
         <input type="hidden" id="id" name="id" value="#(prc.id ? prc.id : '')#">
         <div class="form-group">
             <label for="exampleInputEmail1">Nome modelo</label>
