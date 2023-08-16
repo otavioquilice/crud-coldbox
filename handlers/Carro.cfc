@@ -98,8 +98,8 @@ component extends="coldbox.system.EventHandler" {
 				modelo: dado.getModeloCarro(),
 				ano: dado.getAno(),
 				quantidade: dado.getQuantidade(),
-				editar: '<a href="/carro/show?id=#dado.getIdCarro()#">Editar</a>',
-				excluir: '<a href="/carro/delete?id=#dado.getIdCarro()#">Excluir</a>'
+				editar: '<a href="/carro/show?id=#dado.getIdCarro()#"><button type="button" class="btn btn-primary">Editar</button></a>',
+				excluir: '<a href="/carro/delete?id=#dado.getIdCarro()#"><button type="button" class="btn btn-primary">Excluir</button></a>'
 			});
 		}
 

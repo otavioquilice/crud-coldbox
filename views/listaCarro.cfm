@@ -4,7 +4,8 @@
     #html.table( data=prc.carros, class="table table-striped" )#
 
     <br>
-     <a href="#event.buildLink('carro.index')#">Criar carro</a>
+    
+    <a href="#event.buildLink('carro.index')#"><button type="button" class="btn btn-primary">Cadastrar</button></a>
 </cfoutput>
 
     
