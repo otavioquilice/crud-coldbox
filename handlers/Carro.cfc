@@ -17,11 +17,11 @@ component extends="coldbox.system.EventHandler" {
 		dados = carro.new();
 
 		dados.setModeloCarro(rc.modeloCarro);
-		dados.setAno(rc.ano);
+		dados.setAno(dateTimeFormat(rc.ano, 'yyyy-mm-dd'));
 		dados.setQuantidade(rc.quantidade);
 		dados.save(dados);
 
-		return relocate(url='http://localhost:8500/carro/listar');
+		return relocate(url= event.buildLink('carro.listar'));
 
 		
 	}
@@ -55,11 +55,11 @@ component extends="coldbox.system.EventHandler" {
 		if (dados.getIdCarro()) {
 
             dados.setModeloCarro(rc.modeloCarro);
-            dados.setAno(rc.ano);
+            dados.setAno(dateTimeFormat(rc.ano, 'yyyy-mm-dd'));
 			dados.setQuantidade(rc.quantidade);
             carro.save(dados);
 
-			return relocate(url='http://localhost:8500/carro/listar');
+			return relocate(url= event.buildLink('carro.listar'));
 
 		} else {
 
@@ -77,7 +77,7 @@ component extends="coldbox.system.EventHandler" {
 
 			carro.delete(dados);  
 			   
-            return relocate(url='http://localhost:8500/carro/listar');
+            return relocate(url= event.buildLink('carro.listar'));
 
 		} else {
 
@@ -96,10 +96,10 @@ component extends="coldbox.system.EventHandler" {
 
 			dadosSimplificados.append({
 				modelo: dado.getModeloCarro(),
-				ano: dado.getAno(),
+				ano: dateFormat(dado.getAno(), 'dd/mm/yyyy'),
 				quantidade: dado.getQuantidade(),
 				editar: '<a href="/carro/show?id=#dado.getIdCarro()#"><button type="button" class="btn btn-primary">Editar</button></a>',
-				excluir: '<a href="/carro/delete?id=#dado.getIdCarro()#"><button type="button" class="btn btn-primary">Excluir</button></a>'
+				excluir: '<a href="/carro/delete?id=#dado.getIdCarro()#"><button type="button" class="btn btn-danger">Excluir</button></a>'
 			});
 		}
 
