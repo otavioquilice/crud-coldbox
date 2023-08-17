@@ -1,23 +1,15 @@
 {
-    "dockEnable":false,
-    "trayEnable":false,
-    "openBrowser":false,
+    "openBrowser":true,
     "name":"crud_carros",
     "web":{
-        "blockCFAdmin":false,
         "blockSensitivePaths":true,
-        "host":"0.0.0.0",
         "http":{
             "enable":true,
             "port":8500
         },
         "rewrites":{
             "enable":true
-        },
-        "rules":[
-            "regex('(.*).xml') -> set-error( 404 )",
-            "regex('(.*).XML') -> set-error( 404 )"
-        ]
+        }
     },
     "app":{
         "cfengine":"adobe@2018.0.14.330003"
