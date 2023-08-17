@@ -68,7 +68,7 @@ component extends="coldbox.system.EventHandler" {
 
 	}
 
-	any function delete( event, rc, prc ){
+	any function deletar( event, rc, prc ){
 
         var idCarro = rc.id;
 		dados  = carro.get(idCarro);
